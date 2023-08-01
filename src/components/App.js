@@ -89,7 +89,7 @@ function Form({ onCreatItem }) {
       </select>
       <input
         type="text"
-        placeholder="Add your add here"
+        placeholder="Add your items here"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
@@ -103,6 +103,12 @@ function Form({ onCreatItem }) {
 
 function PackingList({ itemArray, onDelete, onToggle, cleareList }) {
   const [sortBy, setSortBy] = useState("input");
+  if (itemArray.length < 0)
+    return (
+      <div>
+        <h3>start add items to your list </h3>
+      </div>
+    );
   let sortedItem;
   if (sortBy === "input") sortedItem = itemArray;
   console.log(sortedItem);

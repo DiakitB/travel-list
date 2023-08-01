@@ -103,12 +103,7 @@ function Form({ onCreatItem }) {
 
 function PackingList({ itemArray, onDelete, onToggle, cleareList }) {
   const [sortBy, setSortBy] = useState("input");
-  if (itemArray.length < 0)
-    return (
-      <div>
-        <h3>start add items to your list </h3>
-      </div>
-    );
+
   let sortedItem;
   if (sortBy === "input") sortedItem = itemArray;
   console.log(sortedItem);
@@ -167,6 +162,12 @@ function Item({ item, onDelete, onToggle }) {
 // Stats component
 
 function Stats({ itemArray }) {
+  if (!itemArray.length)
+    return (
+      <p className="stats">
+        <em>Start adding som items to your packing list 🔹🔷🔹</em>
+      </p>
+    );
   const numItem = itemArray.length;
   const itemsPacked = itemArray.filter((item) => item.packed).length;
   const percentage = Math.round((itemsPacked / numItem) * 100);
